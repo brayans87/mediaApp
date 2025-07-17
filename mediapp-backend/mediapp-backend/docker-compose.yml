@@ -1,0 +1,15 @@
+  version: '3.8'
+
+  services:
+
+    db:
+      image: postgres:15.2
+      container_name: mediapp-backend
+      restart: always
+
+      environment:
+        - POSTGRES_DB=mediapp_2025_2
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=123
+      ports:
+        - "5432:5432"
