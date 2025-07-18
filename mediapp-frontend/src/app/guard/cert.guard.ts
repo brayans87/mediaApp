@@ -29,7 +29,8 @@ export const certGuard = (route: ActivatedRouteSnapshot, state: RouterStateSnaps
             const url = state.url;
             //const username = helper.decodeToken(token).sub;
 
-             return menuService.getMenusByUser().pipe(map( (data: Menu[]) => {
+             return menuService.getMenusByUser().pipe(
+                map( (data: Menu[]) => {
                 menuService.setMenuChange(data);
 
                 let count = 0;
