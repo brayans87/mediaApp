@@ -11,23 +11,19 @@ import { environment } from '../../../environments/environment.development';
 })
 export class DashboardComponent {
 
-  username : string;
+  username: string;
 
   private menuService = inject(MenuService);
 
   ngOnInit(): void {
 
-    const helper = new JwtHelperService;
+    const helper = new JwtHelperService();
     const token = sessionStorage.getItem(environment.TOKEN_NAME);
     const decodedToken = helper.decodeToken(token);
 
     this.username = decodedToken.sub;
 
-    this.menuService.getMenusByUser().subscribe(data =>{      
-      console.log(data);
-      this.menuService.setMenuChange(data);        
-
-    } );
+    this.menuService.getMenusByUser().subscribe(data => this.menuService.setMenuChange(data));
   }
 
 }

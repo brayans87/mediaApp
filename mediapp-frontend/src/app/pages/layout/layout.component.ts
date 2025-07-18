@@ -9,6 +9,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Menu } from '../../model/menu';
 import { MenuService } from '../../services/menu.service';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-layout',
@@ -23,20 +24,21 @@ import { MenuService } from '../../services/menu.service';
     MatIconModule,
     MatDividerModule,
     RouterLinkActive
-
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css',
 })
 export class LayoutComponent {
-
-  menus : Menu[];
+  menus: Menu[];
 
   private menuService = inject(MenuService);
+  private loginService = inject(LoginService);
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.menuService.getMenuChange().subscribe(data => this.menus = data);
   }
 
-
+  logout(){
+    this.loginService.logout();
+  }
 }

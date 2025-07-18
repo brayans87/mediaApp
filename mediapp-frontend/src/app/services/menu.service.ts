@@ -6,32 +6,24 @@ import { environment } from '../../environments/environment.development';
 import { Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class MenuService  extends GenericService<Menu>{
-
- 
-   private menuChange = new Subject<Menu[]>();
+export class MenuService extends GenericService<Menu> {
+  private menuChange = new Subject<Menu[]>();
 
   constructor() {
-  super(
-    inject(HttpClient),
-    `${environment.HOST}/menus`
-  )
-   }
+    super(inject(HttpClient), `${environment.HOST}/menus`);
+  }
 
-   getMenusByUser(){
-    return this.http.post<Menu[]> (`${environment.HOST}/menus/user`, {});
-   }
+  getMenusByUser() {
+    return this.http.post<Menu[]>(`${environment.HOST}/menus/user`, {});
+  }
 
-   getMenuChange(){
+  getMenuChange(){
     return this.menuChange.asObservable();
-   }
+  }
 
-   setMenuChange(menus : Menu[]){
+  setMenuChange(menus: Menu[]){
     this.menuChange.next(menus);
-   }
-
-
-
+  }
 }

@@ -1,7 +1,6 @@
 export class Menu{
-    idMenu: string;
-    icon : string;
-    name : string;
-    url : string;
-    
+    idMenu: number;
+    icon: string;
+    name: string;
+    url: string;
 }

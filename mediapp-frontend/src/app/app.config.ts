@@ -6,6 +6,7 @@ import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@a
 import { ServerErrorsInterceptor } from './interceptor/server-error.interceptor';
 import { environment } from '../environments/environment.development';
 import { JwtModule } from '@auth0/angular-jwt';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 export function tokenGetter(){
   return sessionStorage.getItem(environment.TOKEN_NAME);
@@ -30,6 +31,7 @@ export const appConfig: ApplicationConfig = {
       provide: HTTP_INTERCEPTORS,
       useClass: ServerErrorsInterceptor,
       multi: true
-    }
+    },
+    { provide: LocationStrategy, useClass: HashLocationStrategy}
   ]
 };

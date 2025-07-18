@@ -8,21 +8,24 @@ import { ExamComponent } from './exam/exam.component';
 import { SearchComponent } from './search/search.component';
 import { ReportComponent } from './report/report.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { certGuard } from '../guard/cert.guard';
+import { Not403Component } from './not403/not403.component';
 
 export const pagesRoutes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [ certGuard ] },
   {
     path: 'patient',
     component: PatientComponent,
     children: [
       { path: 'new', component: PatientEditComponent },
       { path: 'edit/:id', component: PatientEditComponent },
-    ],
+    ], canActivate: [ certGuard ], 
   },
-  { path: 'medic', component: MedicComponent },
-  { path: 'specialty', component: SpecialtyComponent },
-  { path: 'exam', component: ExamComponent },
-  { path: 'consult-wizard', component: ConsultWizardComponent },
-  { path: 'search', component: SearchComponent },
-  { path: 'report', component: ReportComponent },
+  { path: 'medic', component: MedicComponent, canActivate: [ certGuard ] },
+  { path: 'specialty', component: SpecialtyComponent, canActivate: [ certGuard ] },
+  { path: 'exam', component: ExamComponent, canActivate: [ certGuard ] },
+  { path: 'consult-wizard', component: ConsultWizardComponent, canActivate: [ certGuard ] },
+  { path: 'search', component: SearchComponent, canActivate: [ certGuard ] },
+  { path: 'report', component: ReportComponent, canActivate: [ certGuard ] },
+  { path: 'not-403', component: Not403Component}
 ];
