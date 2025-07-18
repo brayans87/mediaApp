@@ -28,7 +28,7 @@ public class MedicController {
     //private final ModelMapper modelMapper;
 
 
-    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    //@PreAuthorize("hasAuthority('ADMIN') ")
     //@PreAuthorize("@authorizeLogic.hasAccess('findAll')")
     @GetMapping
     public ResponseEntity<List<MedicDTO>> findAll() throws Exception {

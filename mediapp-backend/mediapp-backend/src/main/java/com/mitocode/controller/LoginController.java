@@ -31,6 +31,7 @@ public class LoginController {
         final String token = jwtTokenUtil.generateToken(userDetails);
 
         return ResponseEntity.ok(new JwtResponse(token));
+
     }
 
     private void authenticate(String username, String password) throws Exception{

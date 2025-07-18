@@ -19,6 +19,7 @@ export class LoginService {
   login(username: string, password: string){
     const body: ILoginRequest = { username, password };
 
+   // console.log(body);
     return this.http.post<any>(this.url, body);
   }
 }
